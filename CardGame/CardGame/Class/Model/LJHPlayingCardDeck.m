@@ -12,7 +12,7 @@
 - (instancetype)init{
     if (self == [super init]) {
         for (NSString *suit in [LJHPlayingCard validSuits]) {
-            for (NSUInteger rank = 1; rank <= 7; rank++) {
+            for (NSUInteger rank = 1; rank <= [LJHPlayingCard maxRank]; rank++) {
                 LJHPlayingCard *card = [[LJHPlayingCard alloc] init];
                 card.suit = suit;
                 card.rank = rank;

@@ -65,7 +65,7 @@
 }
 
 - (void)addButtons{
-    for (int i = 0 ; i < 28; i ++) {
+    for (int i = 0 ; i < 30; i ++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
         button.frame = CGRectMake(0, 0, button.currentBackgroundImage.size.width * 0.5, button.currentBackgroundImage.size.height * 0.5);
