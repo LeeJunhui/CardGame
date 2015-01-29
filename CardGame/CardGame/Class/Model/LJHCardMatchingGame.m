@@ -34,31 +34,42 @@
         }
     }
     return self;
+    
+
 }
 
-- (LJHCard *)cardAtIndex:(NSUInteger)index{
+- (LJHCard *)cardAtIndex:(NSUInteger)index
+{
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
 static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOSE = 2;
-- (void)chooseCardAtIndex:(NSUInteger)index{
+- (void)chooseCardAtIndex:(NSUInteger)index
+{
     LJHCard *card = [self cardAtIndex:index];
     NSLog(@"IsChosen %d IsMatched %d",card.isChosen,card.isMatched);
-    if (!card.isMatched) {
-        if (card.isChosen) {
+    if (!card.isMatched)
+    {
+        if (card.isChosen)
+        {
             card.chosen = NO;
         }
-        else {
-            for (LJHCard *otherCard in self.cards) {
-                if (otherCard.isChosen && !otherCard.isMatched) {
+        else
+        {
+            for (__block LJHCard *otherCard in self.cards)
+            {
+                if (otherCard.isChosen && !otherCard.isMatched)
+                {
                     int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
+                    if (matchScore)
+                    {
                         self.score += MATCH_BONUS * matchScore;
                         otherCard.matched = YES;
                         card.matched = YES;
-                    } else {
+                    } else
+                    {
                         matchScore -= MISMATCH_PENALTY;
                         otherCard.chosen = NO;
                     }
@@ -68,8 +79,8 @@ static const int COST_TO_CHOSE = 2;
             self.score -= COST_TO_CHOSE;
             card.chosen = YES;
         }
-
     }
 }
+
 
 @end
